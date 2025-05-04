@@ -3,7 +3,8 @@ nixPkgs = ["python311", "nodejs_20"]
 
 [phases.install]
 cmds = [
-  "cd flask-backend && pip install -r requirements.txt",
+  "cd flask-backend && python3 -m pip install --upgrade pip",
+  "cd flask-backend && python3 -m pip install -r requirements.txt",
   "cd react-frontend && npm install"
 ]
 
@@ -13,4 +14,4 @@ cmds = [
 ]
 
 [start]
-cmd = "cd flask-backend && python app.py"
+cmd = "cd flask-backend && python3 app.py"
