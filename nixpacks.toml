@@ -1,15 +1,12 @@
-[phases.setup]
-nixPkgs = ["python311", "nodejs_20"]
-
 [phases.install]
 cmds = [
-  "cd flask-backend && pip install -r requirements.txt",
-  "cd react-frontend && npm install"
+  "if [ -d 'flask-backend' ]; then cd flask-backend && pip install -r requirements.txt; else echo 'Error: flask-backend directory not found' && exit 1; fi",
+  "if [ -d 'react-frontend' ]; then cd react-frontend && npm install; else echo 'Error: react-frontend directory not found' && exit 1; fi"
 ]
 
 [phases.build]
 cmds = [
-  "cd react-frontend && npm run build"
+  "if [ -d 'react-frontend' ]; then cd react-frontend && npm run build; else echo 'Error: react-frontend directory not found' && exit 1; fi"
 ]
 
 [start]
