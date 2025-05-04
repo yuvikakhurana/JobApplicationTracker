@@ -1,15 +1,9 @@
 [phases.setup]
-nixPkgs = ["python311", "nodejs_20", "curl"]
+nixPkgs = ["python311", "nodejs_20"]
 
 [phases.install]
 cmds = [
-  # Install pip manually
-  "cd flask-backend && curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py",
-  
-  # Now install your Python dependencies
-  "cd flask-backend && python3 -m pip install -r requirements.txt",
-
-  # React dependencies
+  "cd flask-backend",
   "cd react-frontend && npm install"
 ]
 
@@ -19,4 +13,4 @@ cmds = [
 ]
 
 [start]
-cmd = "cd flask-backend && python3 app.py"
+cmd = "cd flask-backend && python app.py"
