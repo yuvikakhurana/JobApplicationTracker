@@ -1,22 +1,23 @@
 [phases.setup]
 nixPkgs = [
-  "python311",
-  "python311Packages.pip",  # Ensures pip is available in the environment
+  "python311",  # Ensure Python 3.11 is available
+  "python311Packages.pip",  # Ensure pip is available
   "nodejs_20"
 ]
 
 [phases.install]
 cmds = [
-  "cd flask-backend && python3 -m venv venv",  # Create a virtual environment
-  "cd flask-backend && source venv/bin/activate && pip install -r requirements.txt",  # Activate and install dependencies
+  # Install the Python dependencies directly into the global environment
+  "cd flask-backend && python3 -m pip install -r requirements.txt",  # Install Python dependencies from requirements.txt
+  
+  # Install the React frontend dependencies
   "cd react-frontend && npm install"
 ]
 
-
 [phases.build]
 cmds = [
-  "cd react-frontend && npm run build"
+  "cd react-frontend && npm run build"  # Build the React frontend
 ]
 
 [start]
-cmd = "cd flask-backend && python3 app.py"
+cmd = "cd flask-backend && python3 app.py"  # Run the Flask application
