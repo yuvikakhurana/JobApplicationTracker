@@ -1,6 +1,6 @@
 [phases.install]
 cmds = [
-  "if [ -d 'flask-backend' ]; then cd flask-backend && python3 -m pip install -r requirements.txt; else echo 'Error: flask-backend directory not found' && exit 1; fi",
+  "if [ -d 'flask-backend' ]; then cd flask-backend && python -m pip install -r requirements.txt; else echo 'Error: flask-backend directory not found' && exit 1; fi",
   "if [ -d 'react-frontend' ]; then cd react-frontend && npm install; else echo 'Error: react-frontend directory not found' && exit 1; fi"
 ]
 
@@ -10,4 +10,4 @@ cmds = [
 ]
 
 [start]
-cmd = "cd flask-backend && python3 app.py"
+cmd = "cd flask-backend && python app.py"
