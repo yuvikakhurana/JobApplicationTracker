@@ -7,9 +7,11 @@ nixPkgs = [
 
 [phases.install]
 cmds = [
-  "cd flask-backend && python3 -m pip install -r requirements.txt",
+  "cd flask-backend && python3 -m venv venv",  # Create a virtual environment
+  "cd flask-backend && source venv/bin/activate && pip install -r requirements.txt",  # Activate and install dependencies
   "cd react-frontend && npm install"
 ]
+
 
 [phases.build]
 cmds = [
