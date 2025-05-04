@@ -9,7 +9,7 @@ nixPkgs = [
 cmds = [
   "python3 -m venv /app/venv", # Create venv in /app
   "source /app/venv/bin/activate",
-  "pip install --no-cache-dir --break-system-packages -r /app/flask-backend/requirements.txt", # Install with --break-system-packages and no cache
+  "pip3 install --no-cache-dir --break-system-packages -r /app/flask-backend/requirements.txt", # Install with --break-system-packages and no cache
   "npm install --prefix /app/react-frontend" # Correct npm install
 ]
 
