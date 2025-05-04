@@ -3,13 +3,22 @@ nixPkgs = ["python311", "nodejs_20"]
 
 [phases.install]
 cmds = [
+  # Install pip if it doesn't exist
+  "cd flask-backend && python3 -m ensurepip --upgrade",
+  
+  # Now upgrade pip
   "cd flask-backend && python3 -m pip install --upgrade pip",
+  
+  # Install requirements
   "cd flask-backend && python3 -m pip install -r requirements.txt",
+  
+  # Install node modules for the React frontend
   "cd react-frontend && npm install"
 ]
 
 [phases.build]
 cmds = [
+  # Build the React frontend
   "cd react-frontend && npm run build"
 ]
 
